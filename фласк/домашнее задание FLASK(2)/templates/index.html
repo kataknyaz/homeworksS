@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма регистрации</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <form action="/submit" method="GET">
+            <fieldset>
+                <legend>Регистрация</legend>
+
+                <label for="name">Имя</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="surname">Фамилия</label>
+                <input type="text" id="surname" name="surname" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="age">Возраст</label>
+                <input type="number" id="age" name="age" required>
+            
+            <fieldset>
+                <legend>Пол</legend>
+                <label> <input type="radio" name="gender" value="мужской" required> Мужской</label>
+                <label> <input type="radio" name="gender" value="женский" required> Женский</label>
+                <label> <input type="radio" name="gender" value="другой" required> Другой</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Увлечения</legend>
+                <label><input type="checkbox" name="hobbies" value="Путешествия"> Путешествия</label>
+                <label><input type="checkbox" name="hobbies" value="Спорт"> Спорт</label>
+                <label><input type="checkbox" name="hobbies" value="Игра на пианино"> Игра на пианино</label>
+                <label><input type="checkbox" name="hobbies" value="Чтение"> Чтение</label>
+            </fieldset>
+
+            <label for="city">Город</label>
+            <select id="city" name="city">
+                <option value="Сочи">Сочи</option>
+                <option value="Иваново">Иваново</option>
+                <option value="Москва">Москва</option>
+                <option value="Санкт-Петербург">Санкт-Петербург</option>
+                <option value="Владимир">Владимир</option>
+            </select>
+            
+            <button type="submit">Отправить</button>
+            </fieldset>
+        </form>
+
+        {% if data %}
+        <h2>Вы ввели:</h2>
+        <table>
+            <tr><th>Поле</th><th>Значение</th></tr>
+            {% for key, value in data.items() %}
+            <tr><td>{{ key }}</td><td>{{ value }}</td></tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    </div>
+</body>
+</html>
+
+
+               
+              
+               
+
+     
