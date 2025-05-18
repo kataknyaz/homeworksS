@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Добро пожаловать в наше приложение!</h1>
+
+      
+        {% if is_logged_in %}
+            <h2>Добро пожаловать, {{ user_role }}!</h2>
+        {% else %}
+            <h2>Войдите в систему</h2>
+        {% endif %}
+
+        <h3>Список пользователей:</h3>
+        <ul>
+          
+            {% for user in users %}
+                <li>{{ user }}</li>
+            {% endfor %}
+        </ul>
+
+        <nav>
+            <a href="/">Главная</a>             
+            <a href="/contacts">Контакты</a>
+        </nav>
+    </div>
+</body>
+</html>
