@@ -1,0 +1,39 @@
+body {
+    background-color: #979296;
+    margin: 0;
+    padding: 20px;
+    background-image: url(/static/f1fea2a982e1b273c6f2c6b30288c545.jpg);  
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+nav {
+    margin-top: 20px;
+}
+
+nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #007bff;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.cont {
+background-image: url(/static/1726662989_new_preview_1719399924_new_preview_уавав.jpg);  
+}
