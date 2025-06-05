@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация пользователя</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Регистрация пользователя</h2>
+
+<form action="/" method="post">
+    <label for="first_name">Имя:</label><br>
+    <input type="text" id="first_name" name="first_name" required><br><br>
+
+    <label for="last_name">Фамилия:</label><br>
+    <input type="text" id="last_name" name="last_name" required><br><br>
+
+    <label for="age">Возраст:</label><br>
+    <input type="number" id="age" name="age" required min="1"><br><br>
+
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label>Пол:</label><br>
+    <input type="radio" id="male" name="gender" value="Мужской" required>
+    <label for="male">Мужской</label><br>
+    
+    <input type="radio" id="female" name="gender" value="Женский">
+    <label for="female">Женский</label><br><br>
+
+    <label for="address">Адрес для доставки:</label><br>
+    <textarea id="address" name="address" required></textarea><br><br>
+
+    <input type="checkbox" id="subscribe" name="subscribe">
+    <label for="subscribe">Хотите ли подписаться на новости нашего интернет-магазина?</label><br><br>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+{% if user_data %}
+    <div class="result">
+        <h3>Введенные данные:</h3>
+        <p>Имя: {{ user_data.first_name }}</p>
+        <p>Фамилия: {{ user_data.last_name }}</p>
+        <p>Возраст: {{ user_data.age }}</p>
+        <p>Email: {{ user_data.email }}</p>
+        <p>Пол: {{ user_data.gender }}</p>
+        <p>Адрес для доставки: {{ user_data.address }}</p>
+        <p>Подписка на новости: {{ 'Да' if user_data.subscribe else 'Нет' }}</p>
+    </div>
+{% endif %}
+
+</body>
+</html>

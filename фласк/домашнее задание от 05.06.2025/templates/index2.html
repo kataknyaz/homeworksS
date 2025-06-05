@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Калькулятор</h2>
+
+<form action="/" method="post">
+    <label for="numbers">Введите три числа (через пробел):</label><br>
+    <input type="text" id="numbers" name="numbers" required><br><br>
+
+    <label>Выберите операцию:</label><br>
+    <input type="radio" id="min" name="operation" value="min" required>
+    <label for="min">Минимум</label><br>
+    
+    <input type="radio" id="max" name="operation" value="max">
+    <label for="max">Максимум</label><br>
+    
+    <input type="radio" id="average" name="operation" value="average">
+    <label for="average">Среднее арифметическое</label><br><br>
+
+    <button type="submit">Вычислить</button>
+</form>
+
+{% if result is not none %}
+    <div class="result">Результат: {{ result }}</div>
+{% endif %}
+
+</body>
+</html>
