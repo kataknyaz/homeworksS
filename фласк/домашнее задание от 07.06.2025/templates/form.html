@@ -1,0 +1,18 @@
+{% extends "base.html" %}  <!-- Наследуем базовый шаблон -->
+
+{% block title %}Форма ввода{% endblock %}  <!-- Заголовок страницы формы -->
+
+{% block content %}
+<h2>Введите свои данные</h2>  <!-- Заголовок формы -->
+<form method="POST">  <!-- Форма отправляется методом POST -->
+    <div class="form-group">  <!-- Группа для поля ввода имени -->
+        <label for="name">Имя:</label>
+        <input type="text" class="form-control" id="name" name="name" required>  <!-- Поле ввода имени -->
+    </div>
+    <div class="form-group">  <!-- Группа для поля ввода email -->
+        <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>  <!-- Поле ввода email -->
+    </div>
+    <button type="submit" class="btn btn-primary">Отправить</button>  <!-- Кнопка отправки формы -->
+</form>
+{% endblock %}
