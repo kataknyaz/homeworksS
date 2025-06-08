@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список отзывов</title> <!-- Заголовок страницы -->
+</head>
+<body>
+    <h1>Список отзывов</h1> <!-- Заголовок списка отзывов -->
+    <ul>
+        {% for feedback in feedbacks %} <!-- Перебираем все отзывы -->
+            <li>{{ feedback.name }} ({{ feedback.email }}): {{ feedback.message }}</li> <!-- Отображаем имя, email и сообщение каждого отзыва -->
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('feedback') }}">Назад к форме</a> <!-- Ссылка на форму обратной связи -->
+</body>
+</html>

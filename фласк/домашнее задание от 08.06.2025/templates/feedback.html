@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Обратная связь</title> <!-- Заголовок страницы -->
+</head>
+<body>
+    <h1>Форма обратной связи</h1> <!-- Заголовок формы -->
+    <form method="POST"> <!-- Форма отправляется методом POST -->
+        {{ form.hidden_tag() }} <!-- Защита от CSRF -->
+        <p>
+            {{ form.name.label }}<br> <!-- Метка для поля имени -->
+            {{ form.name(size=32) }}<br> <!-- Поле ввода имени -->
+            {% for error in form.name.errors %} <!-- Проверка на ошибки в поле имени -->
+                <span style="color: red;">[{{ error }}]</span> <!-- Отображение ошибок -->
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br> <!-- Метка для поля email -->
+            {{ form.email(size=32) }}<br> <!-- Поле ввода email -->
+            {% for error in form.email.errors %} <!-- Проверка на ошибки в поле email -->
+                <span style="color: red;">[{{ error }}]</span> <!-- Отображение ошибок -->
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.message.label }}<br> <!-- Метка для поля сообщения -->
+            {{ form.message(cols=30, rows=5) }}<br> <!-- Поле ввода сообщения -->
+            {% for error in form.message.errors %} <!-- Проверка на ошибки в поле сообщения -->
+                <span style="color: red;">[{{ error }}]</span> <!-- Отображение ошибок -->
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p> <!-- Кнопка отправки формы -->
+    </form>
+</body>
+</html>
