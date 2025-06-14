@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Flask App{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <header class="bg-primary text-white text-center p-3">
+        <h1>Добро пожаловать в My Flask App</h1>
+        <nav>
+            <a class="text-white" href="/">Главная</a> |
+            <a class="text-white" href="/user/testuser">Профиль пользователя</a>
+        </nav>
+    </header>
+
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer class="bg-dark text-white text-center p-3 mt-4">
+        <p>&copy; 2023 My Flask App</p>
+    </footer>
+</body>
+</html>
