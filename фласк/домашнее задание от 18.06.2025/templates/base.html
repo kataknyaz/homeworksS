@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> <!-- Подключение CSS -->
+    <title>Todo App</title> <!-- Заголовок страницы -->
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('todo') }}">Home</a> <!-- Ссылка на домашнюю страницу -->
+        {% if current_user.is_authenticated %} <!-- Если пользователь авторизован -->
+            <a href="{{ url_for('logout') }}">Logout</a> <!-- Ссылка на выход -->
+        {% else %} <!-- Если пользователь не авторизован -->
+            <a href="{{ url_for('login') }}">Login</a> <!-- Ссылка на страницу логина -->
+            <a href="{{ url_for('register') }}">Register</a> <!-- Ссылка на страницу регистрации -->
+        {% endif %}
+    </nav>
+    
+    <div class="container">
+        {% with messages = get_flashed_messages() %} <!-- Проверка наличия сообщений -->
+            {% if messages %}
+                <ul>
+                {% for message in messages %} <!-- Вывод сообщений -->
+                    <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        
+        {% block content %}{% endblock %} <!-- Основное содержимое страницы будет вставляться сюда -->
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends 'base.html' %} <!-- Наследуемся от базового шаблона -->
+
+{% block content %}
+<h2>Edit Task</h2> <!-- Заголовок страницы редактирования задачи -->
+<form method="POST"> <!-- Форма редактирования задачи отправляется методом POST -->
+    {{ form.hidden_tag() }} <!-- Защита от CSRF-атак -->
+    {{ form.content.label }} {{ form.content(size=32) }}<br> <!-- Поле для ввода текста задачи -->
+    {{ form.submit() }} <!-- Кнопка отправки формы -->
+</form>
+{% endblock %}

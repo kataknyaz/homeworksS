@@ -1,0 +1,16 @@
+body {
+    font-family: Arial, sans-serif; /* Установка шрифта */
+}
+
+nav {
+    background-color: #f8f9fa; /* Цвет фона навигации */
+    padding: 10px; /* Отступы */
+}
+
+.container {
+    margin: 20px; /* Отступы вокруг контейнера */
+}
+
+ul {
+    list-style-type: none; /* Убираем маркеры списка */
+}

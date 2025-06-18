@@ -1,0 +1,12 @@
+{% extends 'base.html' %} <!-- Наследуемся от базового шаблона -->
+
+{% block content %}
+<h2>Register</h2> <!-- Заголовок страницы регистрации -->
+<form method="POST"> <!-- Форма отправляется методом POST -->
+    {{ form.hidden_tag() }} <!-- Защита от CSRF-атак -->
+    {{ form.username.label }} {{ form.username(size=32) }}<br> <!-- Поле имени пользователя -->
+    {{ form.email.label }} {{ form.email(size=32) }}<br> <!-- Поле email -->
+    {{ form.password.label }} {{ form.password(size=32) }}<br> <!-- Поле пароля -->
+    {{ form.submit() }} <!-- Кнопка отправки формы -->
+</form>
+{% endblock %}

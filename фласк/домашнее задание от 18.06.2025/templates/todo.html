@@ -1,0 +1,24 @@
+{% extends 'base.html' %} <!-- Наследуемся от базового шаблона -->
+
+{% block content %}
+<h2>Your Tasks</h2> <!-- Заголовок страницы задач -->
+<form method="POST"> <!-- Форма добавления новой задачи -->  
+    {{ form.hidden_tag() }} <!-- Защита от CSRF-атак -->
+    {{ form.content.label }} {{ form.content(size=32) }}<br> <!-- Поле для ввода текста новой задачи -->
+    {{ form.submit() }} <!-- Кнопка отправки формы -->
+</form>
+
+<ul>
+{% for task in tasks %} <!-- Перебираем все задачи текущего пользователя -->
+    <li>{{ task.content }} 
+        {% if not task.completed %} <!-- Если задача не завершена -->
+            <a href="{{ url_for('complete_task', task_id=task.id) }}">Complete</a> <!-- Ссылка на завершение задачи -->
+            <a href="{{ url_for('edit_task', task_id=task.id) }}">Edit</a> <!-- Ссылка на редактирование задачи -->
+            <a href="{{ url_for('delete_task', task_id=task.id) }}">Delete</a> <!-- Ссылка на удаление задачи -->
+        {% else %}
+            <strong>Completed</strong> <!-- Отметка о том, что задача завершена -->
+        {% endif %}
+    </li>
+{% endfor %}
+</ul>
+{% endblock %}
