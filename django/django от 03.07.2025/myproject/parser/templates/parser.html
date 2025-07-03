@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Минимальный парсер</title>
+    <style>
+        .container { max-width: 800px; margin: 20px auto; }
+        textarea { width: 100%; height: 300px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Простая форма ввода URL -->
+        <form method="POST">
+            {% csrf_token %}
+            <input type="url" name="url" placeholder="https://example.com" required style="width: 70%">
+            <button type="submit">Парсить</button>
+        </form>
+
+        <!-- Вывод ошибок -->
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        <!-- Вывод результатов -->
+        {% if success %}
+            <h2>Результаты для: {{ url }}</h2>
+            <h3>{{ title }}</h3>
+            <textarea readonly>{{ text }}</textarea>
+        {% endif %}
+    </div>
+</body>
+</html>
