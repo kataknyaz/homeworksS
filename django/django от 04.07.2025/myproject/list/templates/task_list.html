@@ -1,0 +1,48 @@
+<!-- task_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список задач</title>
+</head>
+<body>
+    <h1>Список задач</h1>
+    
+    <a href="{% url 'task_create' %}">Создать новую задачу</a>
+
+    <form method="GET">
+        <select name="category">
+            <option value="">Все категории</option>
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category.name }}</option>
+            {% endfor %}
+        </select>
+                <input type="submit" value="Фильтровать">
+    </form>
+
+    <table>
+        <tr>
+            <th>Название</th>
+            <th>Описание</th>
+            <th>Категория</th>
+            <th>Приоритет</th>
+            <th>Статус</th>
+            <th>Действия</th>
+        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td>{{ task.title }}</td>
+                <td>{{ task.description }}</td>
+                <td>{{ task.category }}</td>
+                <td>{{ task.get_priority_display }}</td>
+                <td>{{ task.is_completed }}</td>
+                <td>
+                    <a href="{% url 'task_edit' task.id %}">Редактировать</a>
+                    <a href="{% url 'task_delete' task.id %}">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
